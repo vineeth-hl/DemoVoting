@@ -1,0 +1,336 @@
+/* Election Creator Styles */
+
+.create-election {
+    padding: 40px 5%;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.create-election-container {
+    background-color: #fff;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    padding: 30px;
+}
+
+.election-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.form-row {
+    display: flex;
+    gap: 20px;
+}
+
+.form-row .form-group {
+    flex: 1;
+}
+
+.election-form .form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: var(--dark-bg);
+}
+
+.election-form .form-group label i {
+    margin-right: 8px;
+    color: var(--primary-color);
+}
+
+.election-form input,
+.election-form select,
+.election-form textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+    transition: border-color 0.3s;
+}
+
+.election-form input:focus,
+.election-form select:focus,
+.election-form textarea:focus {
+    border-color: var(--primary-color);
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(74, 144, 226, 0.2);
+}
+
+/* Candidates Section */
+.candidates-section {
+    background-color: #f8f9fa;
+    border-radius: var(--border-radius);
+    padding: 20px;
+}
+
+.candidates-section h3 {
+    margin-bottom: 15px;
+    color: var(--dark-bg);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.candidates-section h3 i {
+    color: var(--primary-color);
+}
+
+.candidate-item {
+    display: flex;
+    gap: 15px;
+    align-items: flex-start;
+    margin-bottom: 15px;
+    background-color: #fff;
+    padding: 15px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    transition: var(--transition);
+}
+
+.candidate-item:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.candidate-item .form-group {
+    margin-bottom: 0;
+    flex: 1;
+}
+
+.remove-candidate {
+    background-color: #f8d7da;
+    color: var(--danger-color);
+    padding: 8px;
+    border-radius: 5px;
+    font-size: 0.9rem;
+    transition: var(--transition);
+}
+
+.remove-candidate:hover {
+    background-color: var(--danger-color);
+    color: white;
+}
+
+.add-candidate-btn {
+    background-color: #e8f4fd;
+    color: var(--primary-color);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 10px;
+    transition: var(--transition);
+}
+
+.add-candidate-btn:hover {
+    background-color: #d1e9fb;
+    transform: translateY(-2px);
+}
+
+/* Privacy Settings */
+.privacy-settings {
+    background-color: #f8f9fa;
+    border-radius: var(--border-radius);
+    padding: 20px;
+}
+
+.privacy-settings h3 {
+    margin-bottom: 15px;
+    color: var(--dark-bg);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.privacy-settings h3 i {
+    color: var(--primary-color);
+}
+
+.checkbox-group {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.checkbox-group input[type="checkbox"] {
+    width: auto;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.checkbox-group label {
+    cursor: pointer;
+}
+
+/* Form Actions */
+.form-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.cancel-btn {
+    background-color: #f8f9fa;
+    color: #666;
+    border: 1px solid #ddd;
+    transition: var(--transition);
+}
+
+.cancel-btn:hover {
+    background-color: #e9ecef;
+}
+
+.create-btn {
+    background-color: var(--primary-color);
+    color: white;
+    transition: var(--transition);
+}
+
+.create-btn:hover {
+    background-color: var(--secondary-color);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Form Message */
+.election-form-message {
+    padding: 12px 15px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    font-weight: 500;
+    display: none;
+}
+
+.election-form-message.success {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.election-form-message.error {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+/* Responsive Styles */
+@media (max-width: 992px) {
+    .form-row {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .candidate-item {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .remove-candidate {
+        align-self: flex-end;
+    }
+}
+
+@media (max-width: 768px) {
+    .create-election-container {
+        padding: 20px 15px;
+    }
+    
+    .form-actions {
+        flex-direction: column-reverse;
+        gap: 10px;
+    }
+    
+    .form-actions button {
+        width: 100%;
+    }
+}
+
+@media (max-width: 576px) {
+    .create-election {
+        padding: 20px 3%;
+    }
+}
+
+/* Voters Section */
+.voters-section {
+    background-color: #f8f9fa;
+    border-radius: var(--border-radius);
+    padding: 20px;
+    margin-top: 20px;
+}
+
+.voters-section h3 {
+    margin-bottom: 15px;
+    color: var(--dark-bg);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.voters-section h3 i {
+    color: var(--primary-color);
+}
+
+.restricted-voters {
+    background-color: #fff;
+    border-radius: 5px;
+    padding: 15px;
+    margin-top: 15px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.form-text {
+    display: block;
+    margin-top: 5px;
+    font-size: 0.85rem;
+    color: #6c757d;
+}
+
+input[type="file"] {
+    padding: 8px;
+    border: 1px dashed #ddd;
+    background-color: #f8f9fa;
+    width: 100%;
+    cursor: pointer;
+}
+
+/* QR Code Preview */
+.qr-code-preview {
+    margin-top: 15px;
+    text-align: center;
+    display: none;
+}
+
+.qr-code-preview h4 {
+    margin-bottom: 10px;
+    color: var(--dark-bg);
+}
+
+.qr-code-container {
+    background-color: #fff;
+    padding: 15px;
+    display: inline-block;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.qr-code-download {
+    margin-top: 10px;
+    background-color: var(--primary-color);
+    color: white;
+    padding: 8px 15px;
+    border-radius: 5px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.qr-code-download:hover {
+    background-color: var(--secondary-color);
+    transform: translateY(-2px);
+} 

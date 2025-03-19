@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Election - E-Voting System</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="assets/css/election-creator.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <a href="index.html">
+                    <i class="fas fa-vote-yea"></i>
+                    <span>E-Voting</span>
+                </a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="elections.html">Elections</a></li>
+                <li><a href="candidates.html">Candidates</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <div class="auth-buttons">
+                <a href="login.html" class="login-btn">Login</a>
+                <a href="register.html" class="register-btn">Register</a>
+            </div>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="create-election">
+            <div class="create-election-container">
+                <h2><i class="fas fa-plus-circle"></i> Create New Election</h2>
+                <div class="election-form-message"></div>
+                
+                <form id="electionForm" class="election-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="electionTitle"><i class="fas fa-heading"></i> Election Title</label>
+                            <input type="text" id="electionTitle" name="electionTitle" placeholder="Enter election title" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="electionType"><i class="fas fa-tag"></i> Election Type</label>
+                            <select id="electionType" name="electionType" required>
+                                <option value="">Select election type</option>
+                                <option value="presidential">Presidential</option>
+                                <option value="parliamentary">Parliamentary</option>
+                                <option value="local">Local Government</option>
+                                <option value="organizational">Organizational</option>
+                                <option value="referendum">Referendum</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="electionDescription"><i class="fas fa-info-circle"></i> Description</label>
+                        <textarea id="electionDescription" name="electionDescription" rows="4" placeholder="Provide details about this election" required></textarea>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="startDate"><i class="fas fa-calendar-alt"></i> Start Date</label>
+                            <input type="datetime-local" id="startDate" name="startDate" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="endDate"><i class="fas fa-calendar-check"></i> End Date</label>
+                            <input type="datetime-local" id="endDate" name="endDate" required>
+                        </div>
+                    </div>
+                    
+                    <div class="candidates-section">
+                        <h3><i class="fas fa-users"></i> Candidates</h3>
+                        <div id="candidatesContainer">
+                            <div class="candidate-item">
+                                <div class="form-group">
+                                    <input type="text" name="candidateName[]" placeholder="Candidate name" required>
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" name="candidateParty[]" placeholder="Party/Affiliation (optional)">
+                                </div>
+                                <button type="button" class="remove-candidate" disabled><i class="fas fa-trash-alt"></i> Remove</button>
+                            </div>
+                        </div>
+                        <button type="button" id="addCandidateBtn" class="add-candidate-btn">
+                            <i class="fas fa-plus"></i> Add Another Candidate
+                        </button>
+                    </div>
+                    
+                    <div class="privacy-settings">
+                        <h3><i class="fas fa-shield-alt"></i> Privacy Settings</h3>
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="isPublic" name="isPublic" checked>
+                            <label for="isPublic">Make this election public (visible to all users)</label>
+                        </div>
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="showResults" name="showResults" checked>
+                            <label for="showResults">Show results to voters after voting</label>
+                        </div>
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="allowComments" name="allowComments">
+                            <label for="allowComments">Allow comments on this election</label>
+                        </div>
+                    </div>
+                    
+                    <!-- Voter Management Section -->
+                    <div class="voters-section">
+                        <h3><i class="fas fa-user-check"></i> Voter Management</h3>
+                        <div class="form-group">
+                            <label for="voterAccessType"><i class="fas fa-lock"></i> Voter Access Type</label>
+                            <select id="voterAccessType" name="voterAccessType" required>
+                                <option value="open">Open (Anyone can vote)</option>
+                                <option value="restricted">Restricted (Only authorized voters)</option>
+                            </select>
+                        </div>
+                        
+                        <div id="restrictedVotersSection" class="restricted-voters" style="display: none;">
+                            <div class="form-group">
+                                <label for="voterIdType"><i class="fas fa-id-card"></i> Voter ID Type</label>
+                                <select id="voterIdType" name="voterIdType">
+                                    <option value="email">Email Address</option>
+                                    <option value="studentId">Student ID</option>
+                                    <option value="employeeId">Employee ID</option>
+                                    <option value="custom">Custom ID</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="votersList"><i class="fas fa-list"></i> Authorized Voters List</label>
+                                <textarea id="votersList" name="votersList" rows="4" placeholder="Enter one voter ID per line (e.g., email addresses or IDs)"></textarea>
+                                <small class="form-text">Enter one voter ID per line, or upload a CSV file.</small>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="votersFile"><i class="fas fa-file-csv"></i> Upload Voters CSV</label>
+                                <input type="file" id="votersFile" name="votersFile" accept=".csv">
+                                <small class="form-text">CSV should have a header row and at least one column with voter IDs.</small>
+                            </div>
+                            
+                            <div class="checkbox-group">
+                                <input type="checkbox" id="generateQrCodes" name="generateQrCodes" checked>
+                                <label for="generateQrCodes">Generate QR codes for voters</label>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-actions">
+                        <button type="button" id="cancelBtn" class="cancel-btn">Cancel</button>
+                        <button type="submit" class="create-btn">Create Election</button>
+                    </div>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-section">
+                <h3>E-Voting System</h3>
+                <p>A secure and transparent platform for conducting elections online.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="elections.html">Elections</a></li>
+                    <li><a href="dashboard.html">Dashboard</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <p><i class="fas fa-envelope"></i> info@e-voting.com</p>
+                <p><i class="fas fa-phone"></i> +1 (555) 123-4567</p>
+                <p><i class="fas fa-map-marker-alt"></i> 123 Democracy St, Election City</p>
+            </div>
+            <div class="footer-section">
+                <h3>Follow Us</h3>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2023 E-Voting System. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="assets/js/script.js"></script>
+    <script src="assets/js/election-creator.js"></script>
+</body>
+</html> 
